@@ -1,0 +1,54 @@
+
+
+// ------------------------------------------------------------------------- //
+// 00 MIXINS
+// ------------------------------------------------------------------------- //
+
+// FONT FACE
+@mixin font-face($font, $src, $style, $weight) {
+	@font-face {
+		font-family: $font;
+		src: url('#{$src}.eot'); // IE9 compat
+		src: url('#{$src}.eot?#iefix') format('embedded-opentype'), // IE8 and below
+			url('#{$src}.woff') format('woff'), // standards
+			url('#{$src}.ttf') format('truetype'), // Safari, Android, iOS
+			url('#{$src}.svg##{$font}') format('svg'); // legacy iOS
+		font-style: $style;
+		font-weight: $style;
+	}
+}
+
+// ------------------------------------------------------------------------- //
+// 01 BODY
+// ------------------------------------------------------------------------- //
+body {
+	font: normal 87.5% $font-primary;
+}
+
+// ------------------------------------------------------------------------- //
+// 02 FONT
+// ------------------------------------------------------------------------- //
+@include font-face ('intro-rust', '#{$get-path-to-font}/intro-rust', normal, normal);
+@include font-face ('realize-my-passion', '#{$get-path-to-font}/realize-my-passion', normal, normal);
+
+// ------------------------------------------------------------------------- //
+// 03 HEADINGS
+// ------------------------------------------------------------------------- //
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	line-height: 1.2;
+	font-weight: normal;
+
+	&.title-accent {
+		font-family: $font-accent;
+	}
+}
+
+h1 {
+	font-size: em(18)
+}

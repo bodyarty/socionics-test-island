@@ -5,6 +5,7 @@ function App() {
 
     return (
         <div className="App">
+            <h1 className='title-accent'>Forbidden Island</h1>
             <div className="block">Yellow</div>
         </div>
     );
