@@ -2,6 +2,7 @@
 
 // INSCRIPTION
 .inscription {
+    position: relative;
     padding: 5px;
     font-size: em(24);
     background: $bg-color-primary;
@@ -36,6 +37,13 @@
             background-image: url('#{$get-path-to-images}/rope-right-side.png');
         }
     }
+
+    .btn {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translate(-50%, 100%);
+    }
 }
 
 // BUTTONS
@@ -46,7 +54,7 @@
     width: auto;
     min-width: $btn-min-width;
     min-height: $btn-min-height;
-	border: none;
+    border: none;
     border-radius: 50px;
     text-align: center;
     text-decoration: none;
@@ -74,13 +82,85 @@
         color: $btn-color;
     }
 
-	&:hover {
-		&,
-		&:visited,
-		&:focus,
-		&:active {
-			background: $btn-bg-color-hover;
-			color: $btn-color-hover;
-		}
+    &:hover {
+        &,
+        &:visited,
+        &:focus,
+        &:active {
+            background: $btn-bg-color-hover;
+            color: $btn-color-hover;
+        }
+    }
+}
+
+// INPUT
+input[type='text'] {
+	padding: 10px 40px;
+	height: 30px;
+	border-radius: 15px;
+	border: 2px solid $decor-color-primary;
+	box-shadow: none;
+	font-family: $font-primary;
+	font-size: em(20);
+	text-align: center;
+}
+
+// USER SETUP
+.user-setup {
+	.inscription-title {
+		margin: 0 0 20px;
 	}
+
+    .user-name {
+        margin: 0 0 20px;
+    }
+}
+.user-selection {
+    display: flex;
+    justify-content: space-around;
+}
+
+.user-figure-wrapper {
+    position: relative;
+    width: 40%;
+
+    .user-figure {
+        position: relative;
+        opacity: 0.65;
+        transition: all 0.4s;
+
+        &::after {
+            content: '';
+            display: block;
+            margin: -25px 0 0;
+            border-radius: 80%;
+            background: #aaa;
+            width: 100%;
+            height: 30px;
+            transition: all 0.4s;
+        }
+
+        &:hover {
+            opacity: 1;
+
+            &::after {
+                background-color: $decor-color-primary;
+            }
+        }
+    }
+
+    input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+
+        &:checked ~ .user-figure {
+            opacity: 1;
+
+            &::after {
+                background-color: $decor-color-primary;
+            }
+        }
+    }
 }
