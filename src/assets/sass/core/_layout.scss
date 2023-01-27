@@ -1,0 +1,127 @@
+// ------------------------------------------------------------------------- //
+// LAYOUT
+//
+// TABLE OF CONTENTS
+// 01 VARIABLES
+// 02 HTML, BODY
+// ------------------------------------------------------------------------- //
+
+// ------------------------------------------------------------------------- //
+// 00 MIXINS
+// ------------------------------------------------------------------------- //
+@mixin for-size($media) {
+    // desktop first approach
+
+    @if $media == desktop-large-low {
+        @media (max-width: $desktop-lg) {
+            @content;
+        }
+    } @else if $media == desktop-low {
+        @media (max-width: $desktop) {
+            @content;
+        }
+    } @else if $media == tablet-landscape-low {
+        @media (max-width: $tablet-landscape) {
+            @content;
+        }
+    } @else if $media == tablet-portrait-low {
+        @media (max-width: $tablet-portrait) {
+            @content;
+        }
+    } @else if $media == phone-low {
+        @media (max-width: $phone) {
+            @content;
+        }
+    }
+}
+
+%wrapper {
+    margin: 0 auto;
+    padding: 0 $global-padding-hor;
+    width: calc(100% - #{$global-padding-hor * 2});
+    min-width: $min-width-overall;
+    max-width: $max-width-overall;
+
+    // RESPONSIVE - TABLET LANDSCAPE
+    @include for-size(tablet-landscape-low) {
+        padding: 0 $global-padding-hor-sm;
+        width: calc(100% - #{$global-padding-hor-sm * 2});
+    }
+}
+
+// ------------------------------------------------------------------------- //
+// 01 HTML, BODY
+// ------------------------------------------------------------------------- //
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(
+        180deg,
+        $body-bg-color-primary 0%,
+        $body-bg-color-intermediate-first 75%,
+        $body-bg-color-primary-second 83%,
+        $body-bg-color-secondary 100%
+    );
+}
+
+// ------------------------------------------------------------------------- //
+// 02 CONTENT
+// ------------------------------------------------------------------------- //
+#root {
+    display: flex;
+    flex-direction: column;
+    max-height: 1500px;
+}
+
+.content-container {
+    @extend %wrapper;
+    position: relative;
+    flex: 1 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: $min-width-overall;
+
+    // PRELOADING IMAGES FOR SMOOTH SWITCHING BETWEEN STAGES
+    background-image: url('#{$get-path-to-images}/bg/entrance-screen-bg.png');
+    background-image: url('#{$get-path-to-images}/bg/choose-screen-man-bg.png');
+    background-image: url('#{$get-path-to-images}/bg/priority-screen-man-bg.png');
+    background-image: url('#{$get-path-to-images}/bg/result-screen-man-bg.png');
+    background-image: url('#{$get-path-to-images}/bg/choose-screen-woman-bg.png');
+    background-image: url('#{$get-path-to-images}/bg/priority-screen-woman-bg.png');
+    background-image: url('#{$get-path-to-images}/bg/result-screen-woman-bg.png');
+}
+
+.app {
+    background: top center no-repeat;
+    background-size: cover;
+    background-image: url('#{$get-path-to-images}/bg/entrance-screen-bg.png');
+
+    &.character-man {
+        &.screen-question {
+            background-image: url('#{$get-path-to-images}/bg/choose-screen-man-bg.png');
+        }
+        &.screen-priority {
+            background-image: url('#{$get-path-to-images}/bg/priority-screen-man-bg.png');
+        }
+        &.screen-result {
+            background-image: url('#{$get-path-to-images}/bg/result-screen-man-bg.png');
+        }
+    }
+
+    &.character-woman {
+        &.screen-question {
+            background-image: url('#{$get-path-to-images}/bg/choose-screen-woman-bg.png');
+        }
+        &.screen-priority {
+            background-image: url('#{$get-path-to-images}/bg/priority-screen-woman-bg.png');
+        }
+        &.screen-result {
+            background-image: url('#{$get-path-to-images}/bg/result-screen-woman-bg.png');
+        }
+    }
+}

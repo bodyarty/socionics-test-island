@@ -3,7 +3,6 @@
 // ------------------------------------------------------------------------- //
 // 00 MIXINS
 // ------------------------------------------------------------------------- //
-
 // FONT FACE
 @mixin font-face($font, $src, $style, $weight) {
 	@font-face {
@@ -46,9 +45,10 @@ h6 {
 
 	&.title-accent {
 		font-family: $font-accent;
+		text-align: center;
 	}
 }
 
 h1 {
-	font-size: em(18)
+	font-size: em(60);
 }

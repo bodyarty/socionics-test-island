@@ -1,0 +1,25 @@
+// ------------------------------------------------------------------------- //
+// FUNCTIONS
+//
+// TABLE OF CONTENTS
+// 01 EM
+// 02 OPTIMIZED SVG URL
+// ------------------------------------------------------------------------- //
+
+
+// ------------------------------------------------------------------------- //
+// 01 EM
+// ------------------------------------------------------------------------- //
+$browser-context: 14;
+
+@function em($pixels, $context: $browser-context) {
+	@if (unitless($pixels)) {
+		$pixels: calc($pixels * 1px);
+	}
+
+	@if (unitless($context)) {
+		$context: calc($context * 1px);
+	}
+
+	@return #{calc(ceil(calc($pixels / $context * 100)) / 100)}em;
+}
