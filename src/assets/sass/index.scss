@@ -1,8 +1,86 @@
-@import 'core/variables';
-@import 'core/functions';
-@import 'core/typography';
-@import 'core/reset';
-@import 'core/layout';
+@import 'core/_imports';
 
+// INSCRIPTION
+.inscription {
+    padding: 5px;
+    font-size: em(24);
+    background: $bg-color-primary;
+    max-width: 800px;
+    text-align: center;
 
-//
+    .inscription-content {
+        position: relative;
+        padding: 20px 40px;
+        border: 2px dashed $copy-color-primary;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            height: 19px;
+            width: 100%;
+        }
+
+        &::before {
+            left: 30px;
+            transform: translate(-100%, -50%);
+            background: center right no-repeat;
+            background-image: url('#{$get-path-to-images}/rope-left-side.png');
+        }
+
+        &::after {
+            right: 30px;
+            transform: translate(100%, -50%);
+            background: center left no-repeat;
+            background-image: url('#{$get-path-to-images}/rope-right-side.png');
+        }
+    }
+}
+
+// BUTTONS
+.btn {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: $btn-padding-ver $btn-padding-hor;
+    width: auto;
+    min-width: $btn-min-width;
+    min-height: $btn-min-height;
+	border: none;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+    font-family: $font-primary;
+    font-size: em(40);
+    transition: all 0.4s;
+    background: $btn-bg-color;
+    color: $btn-color;
+    cursor: pointer;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    &,
+    &:visited,
+    &:focus,
+    &:active,
+    &.disabled,
+    &[disabled],
+    &.disabled:hover,
+    &[disabled]:hover {
+        background: $btn-bg-color;
+        text-decoration: none;
+        color: $btn-color;
+    }
+
+	&:hover {
+		&,
+		&:visited,
+		&:focus,
+		&:active {
+			background: $btn-bg-color-hover;
+			color: $btn-color-hover;
+		}
+	}
+}

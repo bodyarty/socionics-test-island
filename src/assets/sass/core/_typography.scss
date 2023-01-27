@@ -46,6 +46,8 @@ h6 {
 	&.title-accent {
 		font-family: $font-accent;
 		text-align: center;
+		color: $copy-color-secondary;
+		line-height: 1;
 	}
 }
 
