@@ -95,6 +95,22 @@
     }
 }
 
+.btn-link {
+    border: none;
+    background: none;
+    font-family: $font-primary;
+    font-size: em(26);
+    text-underline-offset: 5px;
+    color: $copy-color-secondary;
+    text-transform: uppercase;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
 // INPUT
 input[type='text'] {
     padding: 10px 40px;
@@ -286,7 +302,7 @@ input[type='text'] {
     width: 392px;
     height: 228px;
     background: -10px -9px;
-    background-image: url('#{$get-path-to-images}/cloud-option-bg.png');
+    background-image: url('#{$get-path-to-images}/cloud-option-bg-2.png');
     cursor: pointer;
 
     &.option-1,
@@ -328,5 +344,54 @@ input[type='text'] {
         text-align: center;
         font-size: em(18);
         color: $copy-color-primary;
+    }
+}
+
+// ------------------------------------------------------------------------- //
+// RESULT SCREEN
+// ------------------------------------------------------------------------- //
+.results {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.scroll {
+    padding: 30px 0 50px;
+    box-sizing: border-box;
+    background: top center no-repeat;
+    width: 356px;
+    height: 490px;
+    text-align: center;
+
+    &.left {
+        padding-left: 35px;
+        padding-right: 35px;
+        background-image: url('#{$get-path-to-images}/scroll-left-bg.png');
+
+        .btn-link {
+            margin: 0 0 0 50px;
+        }
+    }
+
+    &.right {
+        padding-right: 45px;
+        padding-left: 40px;
+        background-image: url('#{$get-path-to-images}/scroll-right-bg.png');
+
+        .btn-link {
+            margin: 0 50px 0 0;
+        }
+    }
+
+    .scroll-title {
+        margin: 0 0 20px;
+        font-size: em(30);
+    }
+
+    .scroll-character-info {
+        font-size: em(18);
+        line-height: 1.2;
+        height: 350px;
     }
 }
