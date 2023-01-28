@@ -1,14 +1,16 @@
 import CreateUserMarkup from './CreateUserMarkup';
 import MainScreenMarkup from './MainScreenMarkup';
+import PriorityStageMarkup from './PriorityStageMarkup';
 import QuestionsMarkup from './QuestionsMarkup';
 
 function App() {
 
     return (
-        <div className="app content-container character-man screen-question">
+        <div className="app content-container character-man screen-priority">
             {/* <MainScreenMarkup/> */}
             {/* <CreateUserMarkup/> */}
-            <QuestionsMarkup />
+            {/* <QuestionsMarkup /> */}
+            <PriorityStageMarkup />
         </div>
     );
 }

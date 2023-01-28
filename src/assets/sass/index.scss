@@ -1,7 +1,7 @@
 @import 'core/_imports';
 
 // ------------------------------------------------------------------------- //
-// INSCRIPTION
+// COMMON COMPONENTS
 // ------------------------------------------------------------------------- //
 .inscription {
     position: relative;
@@ -108,7 +108,7 @@ input[type='text'] {
 }
 
 // ------------------------------------------------------------------------- //
-// USERS SETUP
+// USERS SETUP SETUP
 // ------------------------------------------------------------------------- //
 .user-setup {
     .inscription-title {
@@ -119,6 +119,7 @@ input[type='text'] {
         margin: 0 0 20px;
     }
 }
+
 .user-selection {
     display: flex;
     justify-content: space-around;
@@ -170,7 +171,7 @@ input[type='text'] {
 }
 
 // ------------------------------------------------------------------------- //
-// SIGNS
+// QUESTIONS SCREEN
 // ------------------------------------------------------------------------- //
 .signs-wrapper {
     display: flex;
@@ -244,7 +245,7 @@ input[type='text'] {
             font-size: em(40);
             color: $white;
             background-image: url('#{$get-path-to-images}/button-choose-bg.png');
-            background-position: center -10px;
+            background-position: center -12px;
             text-transform: uppercase;
         }
 
@@ -260,5 +261,72 @@ input[type='text'] {
             content: 'Выбрано';
             background-position: center 781px;
         }
+    }
+}
+
+// ------------------------------------------------------------------------- //
+// PRIORITY SCREEN
+// ------------------------------------------------------------------------- //
+.priority-choices {
+    input {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    label input:checked ~ .cloud-option,
+    .cloud-option:hover {
+        background-position: -422px -10px;
+    }
+}
+
+.cloud-option {
+    position: absolute;
+    width: 392px;
+    height: 228px;
+    background: -10px -9px;
+    background-image: url('#{$get-path-to-images}/cloud-option-bg.png');
+    cursor: pointer;
+
+    &.option-1,
+    &.option-2 {
+        top: 170px;
+    }
+
+    &.option-3,
+    &.option-4 {
+        top: 400px;
+    }
+
+    &.option-1 {
+        left: 130px;
+    }
+
+    &.option-2 {
+        right: 130px;
+    }
+
+    &.option-3 {
+        left: 0;
+    }
+
+    &.option-4 {
+        right: 0;
+    }
+
+    .option-order {
+        font-family: $font-accent;
+        font-size: em(60);
+        color: $copy-color-secondary;
+        text-align: center;
+    }
+
+    .option-caption {
+        margin: 0 auto;
+        width: 70%;
+        text-align: center;
+        font-size: em(18);
+        color: $copy-color-primary;
     }
 }
