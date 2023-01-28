@@ -1,14 +1,14 @@
-import { useState } from 'react';
 import CreateUserMarkup from './CreateUserMarkup';
 import MainScreenMarkup from './MainScreenMarkup';
+import QuestionsMarkup from './QuestionsMarkup';
 
 function App() {
-    const [count, setCount] = useState(0);
 
     return (
-        <div className="app content-container">
+        <div className="app content-container character-man screen-question">
             {/* <MainScreenMarkup/> */}
-            <CreateUserMarkup/>
+            {/* <CreateUserMarkup/> */}
+            <QuestionsMarkup />
         </div>
     );
 }

@@ -1,6 +1,8 @@
 @import 'core/_imports';
 
+// ------------------------------------------------------------------------- //
 // INSCRIPTION
+// ------------------------------------------------------------------------- //
 .inscription {
     position: relative;
     padding: 5px;
@@ -95,21 +97,23 @@
 
 // INPUT
 input[type='text'] {
-	padding: 10px 40px;
-	height: 30px;
-	border-radius: 15px;
-	border: 2px solid $decor-color-primary;
-	box-shadow: none;
-	font-family: $font-primary;
-	font-size: em(20);
-	text-align: center;
+    padding: 10px 40px;
+    height: 30px;
+    border-radius: 15px;
+    border: 2px solid $decor-color-primary;
+    box-shadow: none;
+    font-family: $font-primary;
+    font-size: em(20);
+    text-align: center;
 }
 
-// USER SETUP
+// ------------------------------------------------------------------------- //
+// USERS SETUP
+// ------------------------------------------------------------------------- //
 .user-setup {
-	.inscription-title {
-		margin: 0 0 20px;
-	}
+    .inscription-title {
+        margin: 0 0 20px;
+    }
 
     .user-name {
         margin: 0 0 20px;
@@ -161,6 +165,100 @@ input[type='text'] {
             &::after {
                 background-color: $decor-color-primary;
             }
+        }
+    }
+}
+
+// ------------------------------------------------------------------------- //
+// SIGNS
+// ------------------------------------------------------------------------- //
+.signs-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 165px 0 0;
+    width: 100%;
+
+    .sign {
+        width: 375px;
+        height: 383px;
+        background: top center no-repeat;
+
+        &.left {
+            background-image: url('#{$get-path-to-images}/sign-left-bg.png');
+
+            .sign-caption,
+            .sign-choice {
+                transform: rotate(-5deg);
+            }
+        }
+
+        &.right {
+            background-image: url('#{$get-path-to-images}/sign-right-bg.png');
+
+            .sign-caption,
+            .sign-choice {
+                transform: rotate(5deg);
+            }
+        }
+
+        .sign-caption {
+            display: flex;
+            align-items: center;
+            margin: 0 auto 0;
+            padding: 65px 0 14px;
+            width: 75%;
+            height: 155px;
+            font-family: $font-accent;
+            font-size: em(18);
+            text-align: center;
+            color: $copy-color-primary-inverse;
+        }
+    }
+}
+
+// SWITCHING BUTTON
+.sign-choice {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 0;
+
+    input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    .sign-value {
+        display: block;
+
+        &::after {
+            content: 'Выбрать';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 355px;
+            height: 93px;
+            font-family: $font-accent;
+            font-size: em(40);
+            color: $white;
+            background-image: url('#{$get-path-to-images}/button-choose-bg.png');
+            background-position: center -10px;
+            text-transform: uppercase;
+        }
+
+        &:hover {
+            &::after {
+                background-position: center 781px;
+            }
+        }
+    }
+
+    input:checked ~ .sign-value {
+        &::after {
+            content: 'Выбрано';
+            background-position: center 781px;
         }
     }
 }
