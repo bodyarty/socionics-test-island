@@ -18,7 +18,8 @@ $tablet-portrait         : 900px;   // sm
 $phone                   : 600px;   // xs
 
 $max-width-overall       : 2048px;
-$min-width-overall       : 860px;
+$min-width-overall       : $tablet-portrait;
+$min-height-overall      : $min-width-overall;
 
 $global-padding-hor      : 70px;
 $global-padding-hor-sm   : 20px;

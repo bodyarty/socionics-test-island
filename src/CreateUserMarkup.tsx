@@ -1,6 +1,13 @@
-import React from 'react';
+interface createUserData {
+    name: string;
+    sex: '' | 'male' | 'female';
+}
+interface createUserProps {
+    nextStage: () => void;
+    changeData: (data: Partial<createUserData>) => void;
+}
 
-const CreateUserMarkup = () => {
+const CreateUserMarkup = ({ nextStage, changeData }: createUserProps) => {
     return (
         <>
             <div className="app-header">
@@ -47,8 +54,13 @@ const CreateUserMarkup = () => {
                             </div>
                         </form>
                     </div>
-                    {false ? (
-                        <button className="btn btn-primary">Далее</button>
+                    {true ? (
+                        <button
+                            className="btn"
+                            onClick={nextStage}
+                        >
+                            Далее
+                        </button>
                     ) : null}
                 </div>
             </div>
