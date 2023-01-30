@@ -1,6 +1,21 @@
-import React from 'react';
+import { answers, socionicsFunctions, vector } from './App';
+import questions from './data/questions.json';
 
-const QuestionsMarkup = () => {
+interface questionData {
+    answers: answers;
+}
+interface questionProps  extends questionData {
+    nextStage: () => void;
+    changeData: (data: Partial<questionData>) => void;
+    socionicsFunction: socionicsFunctions | string;
+}
+
+const QuestionsMarkup = ({
+    nextStage,
+    changeData,
+    socionicsFunction,
+    answers,
+}: questionProps) => {
     return (
         <>
             <div className="app-header">
@@ -13,37 +28,73 @@ const QuestionsMarkup = () => {
                 </div>
             </div>
             <div className="app-body">
-                <form className='signs-wrapper'>
-                        <div className="sign left">
-                            <div className="sign-caption">
-                                Вы СРАЗУ начинаете строить дом (шалаш) из
-                                подручных материалов
-                            </div>
-                            <label className="sign-choice">
-                                <input
-                                    type="radio"
-                                    name="question"
-                                />
-                                <span className="sign-value"></span>
-                            </label>
+                <form
+                    className="signs-wrapper"
+                    id="form-test"
+                    onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                        e.preventDefault();
+                        nextStage();
+                    }}
+                >
+                    <div className="sign left">
+                        <div className="sign-caption">
+                            {questions[socionicsFunction][0]}
                         </div>
-                        <div className="sign right">
-                            <div className="sign-caption">
-                                Вы СРАЗУ начинаете строить дом (шалаш) из
-                                подручных материалов
-                            </div>
-                            <label className="sign-choice">
-                                <input
-                                    type="radio"
-                                    name="question"
-                                />
-                                <span className="sign-value"></span>
-                            </label>
+                        <label className="sign-choice">
+                            <input
+                                type="radio"
+                                name="question"
+                                required
+                                onChange={() => {
+                                    changeData({
+                                        answers: {
+                                            ...answers,
+                                            [socionicsFunction]: vector.black,
+                                        },
+                                    });
+                                }}
+                                checked={
+                                    answers[socionicsFunction] === vector.black
+                                }
+                            />
+                            <span className="sign-value"></span>
+                        </label>
+                    </div>
+                    <div className="sign right">
+                        <div className="sign-caption">
+                            {questions[socionicsFunction][1]}
                         </div>
+                        <label className="sign-choice">
+                            <input
+                                type="radio"
+                                name="question"
+                                required
+                                onChange={() => {
+                                    changeData({
+                                        answers: {
+                                            ...answers,
+                                            [socionicsFunction]: vector.white,
+                                        },
+                                    });
+                                }}
+                                checked={
+                                    answers[socionicsFunction] === vector.white
+                                }
+                            />
+                            <span className="sign-value"></span>
+                        </label>
+                    </div>
                 </form>
             </div>
             <div className="app-footer">
-                <button className="btn btn-primary">Далее</button>
+                {answers[socionicsFunction] ? (
+                    <button
+                        className="btn"
+                        form="form-test"
+                    >
+                        Далее
+                    </button>
+                ) : null}
             </div>
         </>
     );

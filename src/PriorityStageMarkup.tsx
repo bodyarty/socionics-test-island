@@ -1,6 +1,20 @@
-import React from 'react';
+import { answers, socionicsFunctions } from './App';
+import questions from './data/questions.json';
+interface priorityQuestionData {
+    answers: answers;
+    answersByPriority: socionicsFunctions[];
+}
+interface priorityQuestionProps extends priorityQuestionData {
+    nextStage: () => void;
+    changeData: (data: Partial<priorityQuestionData>) => void;
+}
 
-const PriorityStageMarkup = () => {
+const PriorityStageMarkup = ({
+    nextStage,
+    changeData,
+    answers,
+    answersByPriority,
+}: priorityQuestionProps) => {
     return (
         <>
             <div className="app-header">
@@ -14,18 +28,52 @@ const PriorityStageMarkup = () => {
                 </div>
             </div>
             <div className="app-body">
-                <div className="priority-choices">
+                <form
+                    className="priority-choices"
+                    id="form-test"
+                    onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                        e.preventDefault();
+                        nextStage();
+                    }}
+                >
                     <label>
                         <input
                             type="checkbox"
                             name="option"
+                            required
+                            checked={answersByPriority.includes(
+                                socionicsFunctions.logics
+                            )}
+                            onChange={() => {
+                                if (
+                                    answersByPriority.includes(
+                                        socionicsFunctions.logics
+                                    )
+                                ) {
+                                    return changeData({
+                                        answersByPriority: [],
+                                    });
+                                }
+                                answersByPriority.push(
+                                    socionicsFunctions.logics
+                                );
+                                return changeData({
+                                    answersByPriority: answersByPriority,
+                                });
+                            }}
                         />
                         <div className="cloud-option option-1">
-                            <h2 className="option-order">1</h2>
+                            <h2 className="option-order">
+                                {answersByPriority.includes(
+                                    socionicsFunctions.logics
+                                )
+                                    ? answersByPriority.indexOf(
+                                          socionicsFunctions.logics
+                                      ) + 1
+                                    : null}
+                            </h2>
                             <p className="option-caption">
-                                Вы точно знаете – что делать, но пока решили
-                                написать план спасения на бумаге и просчитать
-                                все ЗА и ПРОТИВ
+                                {questions.logics[answers.logics - 1]}
                             </p>
                         </div>
                     </label>
@@ -33,12 +81,42 @@ const PriorityStageMarkup = () => {
                         <input
                             type="checkbox"
                             name="option"
+                            required
+                            checked={answersByPriority.includes(
+                                socionicsFunctions.sensorics
+                            )}
+                            onChange={() => {
+                                if (
+                                    answersByPriority.includes(
+                                        socionicsFunctions.sensorics
+                                    )
+                                ) {
+                                    return changeData({
+                                        answersByPriority: [],
+                                    });
+                                }
+
+                                answersByPriority.push(
+                                    socionicsFunctions.sensorics
+                                );
+
+                                return changeData({
+                                    answersByPriority: answersByPriority,
+                                });
+                            }}
                         />
                         <div className="cloud-option option-2">
-                            <h2 className="option-order">2</h2>
+                            <h2 className="option-order">
+                                {answersByPriority.includes(
+                                    socionicsFunctions.sensorics
+                                )
+                                    ? answersByPriority.indexOf(
+                                          socionicsFunctions.sensorics
+                                      ) + 1
+                                    : null}
+                            </h2>
                             <p className="option-caption">
-                                Вы отыскали шлюпку на берегу и храбро поплыли на
-                                ней в океан
+                                {questions.sensorics[answers.sensorics - 1]}
                             </p>
                         </div>
                     </label>
@@ -46,12 +124,40 @@ const PriorityStageMarkup = () => {
                         <input
                             type="checkbox"
                             name="option"
+                            required
+                            checked={answersByPriority.includes(
+                                socionicsFunctions.ethics
+                            )}
+                            onChange={() => {
+                                if (
+                                    answersByPriority.includes(
+                                        socionicsFunctions.ethics
+                                    )
+                                ) {
+                                    return changeData({
+                                        answersByPriority: [],
+                                    });
+                                }
+                                answersByPriority.push(
+                                    socionicsFunctions.ethics
+                                );
+                                return changeData({
+                                    answersByPriority: answersByPriority,
+                                });
+                            }}
                         />
                         <div className="cloud-option option-3">
-                            <h2 className="option-order">3</h2>
+                            <h2 className="option-order">
+                                {answersByPriority.includes(
+                                    socionicsFunctions.ethics
+                                )
+                                    ? answersByPriority.indexOf(
+                                          socionicsFunctions.ethics
+                                      ) + 1
+                                    : null}
+                            </h2>
                             <p className="option-caption">
-                                Вы всплакнули и написали первую запись в своем
-                                путевом дневнике, обращаясь к родным и близким
+                                {questions.ethics[answers.ethics - 1]}
                             </p>
                         </div>
                     </label>
@@ -59,20 +165,55 @@ const PriorityStageMarkup = () => {
                         <input
                             type="checkbox"
                             name="option"
+                            required
+                            checked={answersByPriority.includes(
+                                socionicsFunctions.intuition
+                            )}
+                            onChange={() => {
+                                if (
+                                    answersByPriority.includes(
+                                        socionicsFunctions.intuition
+                                    )
+                                ) {
+                                    return changeData({
+                                        answersByPriority: [],
+                                    });
+                                }
+
+                                answersByPriority.push(
+                                    socionicsFunctions.intuition
+                                );
+                                return changeData({
+                                    answersByPriority: answersByPriority,
+                                });
+                            }}
                         />
                         <div className="cloud-option option-4">
-                            <h2 className="option-order">4</h2>
+                            <h2 className="option-order">
+                                {answersByPriority.includes(
+                                    socionicsFunctions.intuition
+                                )
+                                    ? answersByPriority.indexOf(
+                                          socionicsFunctions.intuition
+                                      ) + 1
+                                    : null}
+                            </h2>
                             <p className="option-caption">
-                                Вы сохраняете спокойствие, решили помолиться и
-                                уповать на господа… (варианты - заниматься
-                                йогой, медитировать, положиться на судьбу…)
+                                {questions.intuition[answers.intuition - 1]}
                             </p>
                         </div>
                     </label>
-                </div>
+                </form>
             </div>
             <div className="app-footer">
-                <button className="btn btn-primary">Далее</button>
+                {answersByPriority.length === Object.keys(answers).length ? (
+                    <button
+                        className="btn btn-primary"
+                        form="form-test"
+                    >
+                        Далее
+                    </button>
+                ) : null}
             </div>
         </>
     );

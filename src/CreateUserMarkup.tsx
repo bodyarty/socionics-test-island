@@ -2,12 +2,17 @@ interface createUserData {
     name: string;
     sex: '' | 'male' | 'female';
 }
-interface createUserProps {
+interface createUserProps extends createUserData {
     nextStage: () => void;
     changeData: (data: Partial<createUserData>) => void;
 }
 
-const CreateUserMarkup = ({ nextStage, changeData }: createUserProps) => {
+const CreateUserMarkup = ({
+    nextStage,
+    changeData,
+    name,
+    sex,
+}: createUserProps) => {
     return (
         <>
             <div className="app-header">
@@ -19,17 +24,35 @@ const CreateUserMarkup = ({ nextStage, changeData }: createUserProps) => {
                         <h2 className="inscription-title">
                             Напиши свое имя и выбери свой прототип
                         </h2>
-                        <form className="user-setup">
+                        <form
+                            id="form-test"
+                            className="user-setup"
+                            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                                e.preventDefault();
+                                nextStage();
+                            }}
+                        >
                             <input
                                 type="text"
                                 placeholder="Имя"
                                 className="user-name"
+                                required
+                                defaultValue={name}
+                                onChange={(
+                                    e: React.ChangeEvent<HTMLInputElement>
+                                ) => {
+                                    changeData({ name: e.target.value });
+                                }}
                             />
                             <div className="user-selection">
                                 <label className="user-figure-wrapper user-male">
                                     <input
                                         type="radio"
                                         name="user"
+                                        required
+                                        onChange={() => {
+                                            changeData({ sex: 'male' });
+                                        }}
                                     />
                                     <div className="user-figure">
                                         <img
@@ -42,7 +65,10 @@ const CreateUserMarkup = ({ nextStage, changeData }: createUserProps) => {
                                     <input
                                         type="radio"
                                         name="user"
-                                        id=""
+                                        required
+                                        onChange={() => {
+                                            changeData({ sex: 'female' });
+                                        }}
                                     />
                                     <div className="user-figure">
                                         <img
@@ -54,17 +80,18 @@ const CreateUserMarkup = ({ nextStage, changeData }: createUserProps) => {
                             </div>
                         </form>
                     </div>
-                    {true ? (
-                        <button
-                            className="btn"
-                            onClick={nextStage}
-                        >
-                            Далее
-                        </button>
-                    ) : null}
                 </div>
             </div>
-            <div className="app-footer"></div>
+            <div className="app-footer">
+                {sex && name ? (
+                    <button
+                        className="btn"
+                        form="form-test"
+                    >
+                        Далее
+                    </button>
+                ) : null}
+            </div>
         </>
     );
 };
