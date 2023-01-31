@@ -1,20 +1,20 @@
-import { answers, socionicsFunctions, vector } from './App';
-import questions from './data/questions.json';
+import { Answers, socionicsFunctions, vector } from './App';
+import { questions } from './data/questions';
 
 interface questionData {
-    answers: answers;
+    characterAnswers: Answers;
 }
-interface questionProps  extends questionData {
+interface questionProps extends questionData {
     nextStage: () => void;
     changeData: (data: Partial<questionData>) => void;
-    socionicsFunction: socionicsFunctions | string;
+    socionicsFunction: socionicsFunctions;
 }
 
 const QuestionsMarkup = ({
     nextStage,
     changeData,
     socionicsFunction,
-    answers,
+    characterAnswers,
 }: questionProps) => {
     return (
         <>
@@ -47,14 +47,15 @@ const QuestionsMarkup = ({
                                 required
                                 onChange={() => {
                                     changeData({
-                                        answers: {
-                                            ...answers,
+                                        characterAnswers: {
+                                            ...characterAnswers,
                                             [socionicsFunction]: vector.black,
                                         },
                                     });
                                 }}
                                 checked={
-                                    answers[socionicsFunction] === vector.black
+                                    characterAnswers[socionicsFunction] ===
+                                    vector.black
                                 }
                             />
                             <span className="sign-value"></span>
@@ -71,14 +72,15 @@ const QuestionsMarkup = ({
                                 required
                                 onChange={() => {
                                     changeData({
-                                        answers: {
-                                            ...answers,
+                                        characterAnswers: {
+                                            ...characterAnswers,
                                             [socionicsFunction]: vector.white,
                                         },
                                     });
                                 }}
                                 checked={
-                                    answers[socionicsFunction] === vector.white
+                                    characterAnswers[socionicsFunction] ===
+                                    vector.white
                                 }
                             />
                             <span className="sign-value"></span>
@@ -87,7 +89,7 @@ const QuestionsMarkup = ({
                 </form>
             </div>
             <div className="app-footer">
-                {answers[socionicsFunction] ? (
+                {characterAnswers[socionicsFunction] ? (
                     <button
                         className="btn"
                         form="form-test"

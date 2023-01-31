@@ -1,7 +1,7 @@
-interface createUserData {
-    name: string;
-    sex: '' | 'male' | 'female';
-}
+import { data, sex } from './App';
+
+
+type createUserData = Pick<data, 'name' | 'characterSex'>
 interface createUserProps extends createUserData {
     nextStage: () => void;
     changeData: (data: Partial<createUserData>) => void;
@@ -11,7 +11,7 @@ const CreateUserMarkup = ({
     nextStage,
     changeData,
     name,
-    sex,
+    characterSex,
 }: createUserProps) => {
     return (
         <>
@@ -50,8 +50,11 @@ const CreateUserMarkup = ({
                                         type="radio"
                                         name="user"
                                         required
+                                        checked={characterSex === sex.male}
                                         onChange={() => {
-                                            changeData({ sex: 'male' });
+                                            changeData({
+                                                characterSex: sex.male,
+                                            });
                                         }}
                                     />
                                     <div className="user-figure">
@@ -66,8 +69,11 @@ const CreateUserMarkup = ({
                                         type="radio"
                                         name="user"
                                         required
+                                        checked={characterSex === sex.female}
                                         onChange={() => {
-                                            changeData({ sex: 'female' });
+                                            changeData({
+                                                characterSex: sex.female,
+                                            });
                                         }}
                                     />
                                     <div className="user-figure">
@@ -83,7 +89,7 @@ const CreateUserMarkup = ({
                 </div>
             </div>
             <div className="app-footer">
-                {sex && name ? (
+                {characterSex && name ? (
                     <button
                         className="btn"
                         form="form-test"

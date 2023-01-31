@@ -4,13 +4,13 @@ import MainScreenMarkup from './MainScreenMarkup';
 import PriorityStageMarkup from './PriorityStageMarkup';
 import QuestionsMarkup from './QuestionsMarkup';
 import ResultMarkup from './ResultMarkup';
-import questions from './data/questions.json';
+import { questions } from './data/questions';
 
 export enum socionicsFunctions {
-    logics,
-    sensorics,
-    ethics,
-    intuition,
+    logics = 'logics',
+    sensorics = 'sensorics',
+    ethics = 'ethics',
+    intuition = 'intuition',
 }
 
 export enum vector {
@@ -18,24 +18,28 @@ export enum vector {
     white = 2,
 }
 
-export interface answers {
-    logics?: vector;
-    sensorics?: vector;
-    ethics?: vector;
-    intuition?: vector;
+export type Answers = {
+    [key in socionicsFunctions]: vector;
+};
+
+export enum sex {
+    male = 'male',
+    female = 'female',
 }
-interface data {
+export interface data {
     name: string;
-    sex: '' | 'male' | 'female';
-    answers: answers;
+    characterSex: sex;
+    characterAnswers: Answers;
     answersByPriority: socionicsFunctions[];
 }
 
+export const questionsKeys = Object.keys(questions) as socionicsFunctions[];
+
 function App() {
     const INITIAL_APP_DATA: data = {
-        name: 'Alex',
-        sex: 'male',
-        answers: {},
+        name: '',
+        characterSex: '' as sex,
+        characterAnswers: {} as Answers,
         answersByPriority: [],
     };
 
@@ -56,8 +60,8 @@ function App() {
 
     useEffect(() => {
         let additionalClasses = '';
-        if (currentStage !== 0 && currentStage !== 1 && data.sex) {
-            additionalClasses = ` character-${data.sex}`;
+        if (currentStage !== 0 && currentStage !== 1 && data.characterSex) {
+            additionalClasses = ` character-${data.characterSex}`;
             if (
                 currentStage === 2 ||
                 currentStage === 3 ||
@@ -84,7 +88,7 @@ function App() {
     // THINK OVER SOLUTION
     const [appClasses, setAppClasses] = useState('app content-container');
 
-    const stagesQuestions = Object.keys(questions).map((socionicsFunction) => {
+    const stagesQuestions = questionsKeys.map((socionicsFunction) => {
         return (
             <QuestionsMarkup
                 nextStage={nextStage}
@@ -108,7 +112,7 @@ function App() {
             changeData={changeData}
             {...data}
         />,
-        <ResultMarkup />,
+        <ResultMarkup {...data} />,
     ];
 
     return <div className={appClasses}>{stages[currentStage]}</div>;
