@@ -1,22 +1,19 @@
-import { Answers } from './App';
-import { questions } from './data/questions';
-import { SocionicsFunction, Vector } from './types';
+import { questions } from '../data/questions';
+import { SocionicsFunction, TestData, Vector } from '../types';
 
-interface questionData {
-    characterAnswers: Answers;
-}
-interface questionProps extends questionData {
+type QuestionData = Pick<TestData, 'characterAnswers'>;
+interface StageQuestionProps extends QuestionData {
     nextStage: () => void;
-    changeData: (data: Partial<questionData>) => void;
+    changeData: (data: Partial<QuestionData>) => void;
     currentSocionicsFunction: SocionicsFunction;
 }
 
-const QuestionsMarkup = ({
+const StageQuestion = ({
     nextStage,
     changeData,
     currentSocionicsFunction,
     characterAnswers,
-}: questionProps) => {
+}: StageQuestionProps) => {
     return (
         <>
             <div className="app-header">
@@ -51,14 +48,14 @@ const QuestionsMarkup = ({
                                         characterAnswers: {
                                             ...characterAnswers,
                                             [currentSocionicsFunction]:
-                                                Vector.black,
+                                                Vector.Black,
                                         },
                                     });
                                 }}
                                 checked={
                                     characterAnswers[
                                         currentSocionicsFunction
-                                    ] === Vector.black
+                                    ] === Vector.Black
                                 }
                             />
                             <span className="sign-value"></span>
@@ -78,14 +75,14 @@ const QuestionsMarkup = ({
                                         characterAnswers: {
                                             ...characterAnswers,
                                             [currentSocionicsFunction]:
-                                                Vector.white,
+                                                Vector.White,
                                         },
                                     });
                                 }}
                                 checked={
                                     characterAnswers[
                                         currentSocionicsFunction
-                                    ] === Vector.white
+                                    ] === Vector.White
                                 }
                             />
                             <span className="sign-value"></span>
@@ -107,4 +104,4 @@ const QuestionsMarkup = ({
     );
 };
 
-export default QuestionsMarkup;
+export default StageQuestion;

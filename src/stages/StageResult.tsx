@@ -1,86 +1,88 @@
-import Scroll from './components/Scroll';
-import { charactersDescription } from './data/charactersDescription';
-import { Answers, SocionicsFunction, Vector } from './types';
+import Scroll from '../components/Scroll';
+import { charactersDescription } from '../data/charactersDescription';
+import { SocionicsFunction, TestData, Vector } from '../types';
 
-interface priorityQuestionProps {
-    name: string;
-    characterAnswers: Answers;
-    answersByPriority: SocionicsFunction[];
-}
+type ResultData = Pick<
+    TestData,
+    'name' | 'characterAnswers' | 'answersByPriority'
+>;
+
+interface StageResultProps extends ResultData {}
+
 export interface Result {
     firstType?: keyof typeof charactersDescription;
     secondType?: keyof typeof charactersDescription;
 }
 
-const ResultMarkup = ({
+const StageResult = ({
     name,
     answersByPriority,
     characterAnswers,
-}: priorityQuestionProps) => {
+}: StageResultProps) => {
     let result: Result = {};
 
-    if (answersByPriority[3] === SocionicsFunction.logics) {
+    if (answersByPriority[3] === SocionicsFunction.Logics) {
         if (
-            answersByPriority[0] === SocionicsFunction.ethics ||
-            answersByPriority[1] === SocionicsFunction.ethics
+            answersByPriority[0] === SocionicsFunction.Ethics ||
+            answersByPriority[1] === SocionicsFunction.Ethics
         ) {
-            if (characterAnswers[SocionicsFunction.ethics] === Vector.black) {
+            if (characterAnswers[SocionicsFunction.Ethics] === Vector.Black) {
                 result.firstType = 'yesenin';
                 result.secondType = 'dumas';
             }
-            if (characterAnswers[SocionicsFunction.ethics] === Vector.white) {
+            if (characterAnswers[SocionicsFunction.Ethics] === Vector.White) {
                 result.firstType = 'huxley';
                 result.secondType = 'nap';
             }
         }
     }
-    if (answersByPriority[3] === SocionicsFunction.sensorics) {
+    if (answersByPriority[3] === SocionicsFunction.Sensorics) {
         if (
-            answersByPriority[0] === SocionicsFunction.intuition ||
-            answersByPriority[1] === SocionicsFunction.intuition
+            answersByPriority[0] === SocionicsFunction.Intuition ||
+            answersByPriority[1] === SocionicsFunction.Intuition
         ) {
             if (
-                characterAnswers[SocionicsFunction.intuition] === Vector.black
+                characterAnswers[SocionicsFunction.Intuition] === Vector.Black
             ) {
                 result.firstType = 'dost';
                 result.secondType = 'rob';
             }
             if (
-                characterAnswers[SocionicsFunction.intuition] === Vector.white
+                characterAnswers[SocionicsFunction.Intuition] === Vector.White
             ) {
                 result.firstType = 'dost';
                 result.secondType = 'rob';
             }
         }
     }
-    if (answersByPriority[3] === SocionicsFunction.ethics) {
+    if (answersByPriority[3] === SocionicsFunction.Ethics) {
         if (
-            answersByPriority[0] === SocionicsFunction.logics ||
-            answersByPriority[1] === SocionicsFunction.logics
+            answersByPriority[0] === SocionicsFunction.Logics ||
+            answersByPriority[1] === SocionicsFunction.Logics
         ) {
-            if (characterAnswers[SocionicsFunction.logics] === Vector.black) {
+            if (characterAnswers[SocionicsFunction.Logics] === Vector.Black) {
                 result.firstType = 'balzac';
                 result.secondType = 'gabin';
             }
-            if (characterAnswers[SocionicsFunction.logics] === Vector.white) {
+            if (characterAnswers[SocionicsFunction.Logics] === Vector.White) {
                 result.firstType = 'zhukov';
                 result.secondType = 'don';
             }
         }
     }
-    if (answersByPriority[3] === SocionicsFunction.intuition) {
+    if (answersByPriority[3] === SocionicsFunction.Intuition) {
         if (
-            answersByPriority[0] === SocionicsFunction.sensorics ||
-            answersByPriority[1] === SocionicsFunction.sensorics
+            answersByPriority[0] === SocionicsFunction.Sensorics ||
+            answersByPriority[1] === SocionicsFunction.Sensorics
         ) {
             if (
-                characterAnswers[SocionicsFunction.sensorics] === Vector.black
+                characterAnswers[SocionicsFunction.Sensorics] === Vector.Black
             ) {
                 result.firstType = 'dreiser';
                 result.secondType = 'maksim';
             }
             if (
-                characterAnswers[SocionicsFunction.sensorics] === Vector.white
+                characterAnswers[SocionicsFunction.Sensorics] === Vector.White
             ) {
                 result.firstType = 'hugo';
                 result.secondType = 'stir';
@@ -150,4 +152,4 @@ const ResultMarkup = ({
     );
 };
 
-export default ResultMarkup;
+export default StageResult;

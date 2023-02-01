@@ -1,18 +1,18 @@
 export enum SocionicsFunction {
-    logics = 'logics',
-    sensorics = 'sensorics',
-    ethics = 'ethics',
-    intuition = 'intuition',
+    Logics = 'logics',
+    Sensorics = 'sensorics',
+    Ethics = 'ethics',
+    Intuition = 'intuition',
 }
 
 export enum Vector {
-    black = 1,
-    white = 2,
+    Black = 1,
+    White = 2,
 }
 
 export enum Sex {
-    male = 'male',
-    female = 'female',
+    Male = 'male',
+    Female = 'female',
 }
 
 export type Answers = {

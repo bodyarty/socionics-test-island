@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import CreateUserMarkup from './CreateUserMarkup';
-import MainScreenMarkup from './MainScreenMarkup';
-import PriorityStageMarkup from './PriorityStageMarkup';
-import QuestionsMarkup from './QuestionsMarkup';
-import ResultMarkup from './ResultMarkup';
-import { questions } from './data/questions';
-import { Answers, Sex, SocionicsFunction, TestData } from './types';
 
-export const questionsKeys = Object.keys(questions) as SocionicsFunction[];
+import StageOpening from './stages/StageOpening';
+import StageCharacterCreate from './stages/StageCharacterCreate';
+import StageQuestion from './stages/StageQuestion';
+import StagePriority from './stages/StagePriority';
+import StageResult from './stages/StageResult';
+
+import { Answers, Sex, SocionicsFunction, TestData } from './types';
 
 function App() {
     const INITIAL_APP_DATA: TestData = {
@@ -57,7 +56,7 @@ function App() {
         SocionicsFunction
     ).map((currentSocionicsFunction) => {
         return (
-            <QuestionsMarkup
+            <StageQuestion
                 nextStage={nextStage}
                 changeData={changeData}
                 currentSocionicsFunction={currentSocionicsFunction}
@@ -67,19 +66,19 @@ function App() {
     });
 
     const stages = [
-        <MainScreenMarkup nextStage={nextStage} />,
-        <CreateUserMarkup
+        <StageOpening nextStage={nextStage} />,
+        <StageCharacterCreate
             nextStage={nextStage}
             changeData={changeData}
             {...data}
         />,
         ...stagesQuestions,
-        <PriorityStageMarkup
+        <StagePriority
             nextStage={nextStage}
             changeData={changeData}
             {...data}
         />,
-        <ResultMarkup {...data} />,
+        <StageResult {...data} />,
     ];
 
     return (

@@ -1,17 +1,17 @@
-import { TestData, Sex } from './types';
+import { TestData, Sex } from '../types';
 
-type createUserData = Pick<TestData, 'name' | 'characterSex'>;
-interface createUserProps extends createUserData {
+type CharacterCreateData = Pick<TestData, 'name' | 'characterSex'>;
+interface StageCharacterCreateProps extends CharacterCreateData {
     nextStage: () => void;
-    changeData: (data: Partial<createUserData>) => void;
+    changeData: (data: Partial<CharacterCreateData>) => void;
 }
 
-const CreateUserMarkup = ({
+const StageCharacterCreate = ({
     nextStage,
     changeData,
     name,
     characterSex,
-}: createUserProps) => {
+}: StageCharacterCreateProps) => {
     return (
         <>
             <div className="app-header">
@@ -49,10 +49,10 @@ const CreateUserMarkup = ({
                                         type="radio"
                                         name="user"
                                         required
-                                        checked={characterSex === Sex.male}
+                                        checked={characterSex === Sex.Male}
                                         onChange={() => {
                                             changeData({
-                                                characterSex: Sex.male,
+                                                characterSex: Sex.Male,
                                             });
                                         }}
                                     />
@@ -68,10 +68,10 @@ const CreateUserMarkup = ({
                                         type="radio"
                                         name="user"
                                         required
-                                        checked={characterSex === Sex.female}
+                                        checked={characterSex === Sex.Female}
                                         onChange={() => {
                                             changeData({
-                                                characterSex: Sex.female,
+                                                characterSex: Sex.Female,
                                             });
                                         }}
                                     />
@@ -101,4 +101,4 @@ const CreateUserMarkup = ({
     );
 };
 
-export default CreateUserMarkup;
+export default StageCharacterCreate;

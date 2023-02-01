@@ -1,10 +1,8 @@
-import React from 'react';
-
-interface mainScreenProps {
+interface StageOpeningProps {
     nextStage: () => void;
 }
 
-const MainScreenMarkup = ({ nextStage }: mainScreenProps) => {
+const StageOpening = ({ nextStage }: StageOpeningProps) => {
     return (
         <>
             <div className="app-header">
@@ -21,10 +19,15 @@ const MainScreenMarkup = ({ nextStage }: mainScreenProps) => {
                 </div>
             </div>
             <div className="app-footer">
-                <button className="btn" onClick={nextStage}>Далее</button>
+                <button
+                    className="btn"
+                    onClick={nextStage}
+                >
+                    Далее
+                </button>
             </div>
         </>
     );
 };
 
-export default MainScreenMarkup;
+export default StageOpening;
