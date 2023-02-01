@@ -1,7 +1,6 @@
-import { data, sex } from './App';
+import { TestData, Sex } from './types';
 
-
-type createUserData = Pick<data, 'name' | 'characterSex'>
+type createUserData = Pick<TestData, 'name' | 'characterSex'>;
 interface createUserProps extends createUserData {
     nextStage: () => void;
     changeData: (data: Partial<createUserData>) => void;
@@ -50,10 +49,10 @@ const CreateUserMarkup = ({
                                         type="radio"
                                         name="user"
                                         required
-                                        checked={characterSex === sex.male}
+                                        checked={characterSex === Sex.male}
                                         onChange={() => {
                                             changeData({
-                                                characterSex: sex.male,
+                                                characterSex: Sex.male,
                                             });
                                         }}
                                     />
@@ -69,10 +68,10 @@ const CreateUserMarkup = ({
                                         type="radio"
                                         name="user"
                                         required
-                                        checked={characterSex === sex.female}
+                                        checked={characterSex === Sex.female}
                                         onChange={() => {
                                             changeData({
-                                                characterSex: sex.female,
+                                                characterSex: Sex.female,
                                             });
                                         }}
                                     />

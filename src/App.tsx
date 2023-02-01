@@ -5,48 +5,23 @@ import PriorityStageMarkup from './PriorityStageMarkup';
 import QuestionsMarkup from './QuestionsMarkup';
 import ResultMarkup from './ResultMarkup';
 import { questions } from './data/questions';
+import { Answers, Sex, SocionicsFunction, TestData } from './types';
 
-export enum socionicsFunctions {
-    logics = 'logics',
-    sensorics = 'sensorics',
-    ethics = 'ethics',
-    intuition = 'intuition',
-}
-
-export enum vector {
-    black = 1,
-    white = 2,
-}
-
-export type Answers = {
-    [key in socionicsFunctions]: vector;
-};
-
-export enum sex {
-    male = 'male',
-    female = 'female',
-}
-export interface data {
-    name: string;
-    characterSex: sex;
-    characterAnswers: Answers;
-    answersByPriority: socionicsFunctions[];
-}
-
-export const questionsKeys = Object.keys(questions) as socionicsFunctions[];
+export const questionsKeys = Object.keys(questions) as SocionicsFunction[];
 
 function App() {
-    const INITIAL_APP_DATA: data = {
+    const INITIAL_APP_DATA: TestData = {
         name: '',
-        characterSex: '' as sex,
+        characterSex: '' as Sex,
         characterAnswers: {} as Answers,
         answersByPriority: [],
     };
 
-    const [data, setData] = useState(INITIAL_APP_DATA);
+    const [data, setData] = useState<TestData>(INITIAL_APP_DATA);
     const [currentStage, setCurrentStage] = useState(0);
+    const [appClasses, setAppClasses] = useState<string[]>([]);
 
-    const changeData = function (data: Partial<data>) {
+    const changeData = function (data: Partial<TestData>) {
         setData((prev) => {
             return { ...prev, ...data };
         });
@@ -59,41 +34,31 @@ function App() {
     };
 
     useEffect(() => {
-        let additionalClasses = '';
-        if (currentStage !== 0 && currentStage !== 1 && data.characterSex) {
-            additionalClasses = ` character-${data.characterSex}`;
-            if (
-                currentStage === 2 ||
-                currentStage === 3 ||
-                currentStage === 4 ||
-                currentStage === 5
-            ) {
-                additionalClasses += ' stage-question';
+        let additionalClasses: string[] = [];
+        if (currentStage > 1 && data.characterSex) {
+            additionalClasses.push(`character-${data.characterSex}`);
+            if (currentStage > 1 && currentStage < 6) {
+                additionalClasses.push('stage-question');
             }
 
             if (currentStage === 6) {
-                additionalClasses += ' stage-priority';
+                additionalClasses.push('stage-priority');
             }
 
             if (currentStage === 7) {
-                additionalClasses += ' stage-result';
+                additionalClasses.push('stage-result');
             }
 
-            setAppClasses((prev) => {
-                return prev + additionalClasses;
-            });
+            setAppClasses(additionalClasses);
         }
     }, [currentStage]);
 
-    // THINK OVER SOLUTION
-    const [appClasses, setAppClasses] = useState('app content-container');
-
-    const stagesQuestions = questionsKeys.map((socionicsFunction) => {
+    const stagesQuestions = questionsKeys.map((currentSocionicsFunction) => {
         return (
             <QuestionsMarkup
                 nextStage={nextStage}
                 changeData={changeData}
-                socionicsFunction={socionicsFunction}
+                currentSocionicsFunction={currentSocionicsFunction}
                 {...data}
             />
         );
@@ -115,7 +80,11 @@ function App() {
         <ResultMarkup {...data} />,
     ];
 
-    return <div className={appClasses}>{stages[currentStage]}</div>;
+    return (
+        <div className={'app content-container ' + appClasses.join(' ')}>
+            {stages[currentStage]}
+        </div>
+    );
 }
 
 export default App;

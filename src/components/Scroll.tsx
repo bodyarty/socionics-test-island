@@ -1,4 +1,4 @@
-import {description} from '../data/description';
+import { description } from '../data/charactersDescription';
 
 interface ScrollProps {
     side: string;

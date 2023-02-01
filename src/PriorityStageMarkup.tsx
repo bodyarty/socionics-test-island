@@ -1,5 +1,5 @@
 import { Answers, socionicsFunctions, vector } from './App';
-import {questions} from './data/questions';
+import { questions } from './data/questions';
 import { questionsKeys } from './App';
 interface priorityQuestionData {
     characterAnswers: Answers;

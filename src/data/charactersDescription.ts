@@ -1,4 +1,4 @@
-export const description = {
+export const charactersDescription = {
     don: {
         name: 'Дон Кихот',
         description: 'don description',

@@ -1,4 +1,4 @@
-import { socionicsFunctions } from '../App';
+import { SocionicsFunction } from '../types';
 
 export const questions: Questions = {
     logics: [
@@ -20,5 +20,5 @@ export const questions: Questions = {
 };
 
 type Questions = {
-    [key in socionicsFunctions]: string[];
+    [key in SocionicsFunction]: string[];
 };
