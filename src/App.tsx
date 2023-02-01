@@ -53,7 +53,9 @@ function App() {
         }
     }, [currentStage]);
 
-    const stagesQuestions = questionsKeys.map((currentSocionicsFunction) => {
+    const stagesQuestions = Object.values<SocionicsFunction>(
+        SocionicsFunction
+    ).map((currentSocionicsFunction) => {
         return (
             <QuestionsMarkup
                 nextStage={nextStage}
