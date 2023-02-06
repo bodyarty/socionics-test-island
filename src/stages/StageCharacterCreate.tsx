@@ -1,4 +1,6 @@
 import { TestData, Sex } from '../types';
+import ManImg from '../assets/images/man.png';
+import WomanImg from '../assets/images/woman.png';
 
 type CharacterCreateData = Pick<TestData, 'name' | 'characterSex'>;
 interface StageCharacterCreateProps extends CharacterCreateData {
@@ -12,6 +14,7 @@ const StageCharacterCreate = ({
     name,
     characterSex,
 }: StageCharacterCreateProps) => {
+    console.log(ManImg);
     return (
         <>
             <div className="app-header">
@@ -58,7 +61,7 @@ const StageCharacterCreate = ({
                                     />
                                     <div className="user-figure">
                                         <img
-                                            src="/src/assets/images/man.png"
+                                            src={ManImg}
                                             alt="Man figure"
                                         />
                                     </div>
@@ -77,7 +80,7 @@ const StageCharacterCreate = ({
                                     />
                                     <div className="user-figure">
                                         <img
-                                            src="/src/assets/images/woman.png"
+                                            src={WomanImg}
                                             alt="Man figure"
                                         />
                                     </div>
