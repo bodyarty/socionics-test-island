@@ -125,28 +125,28 @@ input[type='text'] {
 }
 
 // ------------------------------------------------------------------------- //
-// USERS SETUP SETUP
+// CREATE CHARACTER STAGE
 // ------------------------------------------------------------------------- //
-.user-setup {
+.character-setup {
     .inscription-title {
         margin: 0 0 20px;
     }
 
-    .user-name {
+    .character-name {
         margin: 0 0 20px;
     }
 }
 
-.user-selection {
+.character-selection {
     display: flex;
     justify-content: space-around;
 }
 
-.user-figure-wrapper {
+.character-figure-wrapper {
     position: relative;
     width: 40%;
 
-    .user-figure {
+    .character-figure {
         position: relative;
         opacity: 0.65;
         transition: all 0.4s;
@@ -177,7 +177,7 @@ input[type='text'] {
         height: 0;
         opacity: 0;
 
-        &:checked ~ .user-figure {
+        &:checked ~ .character-figure {
             opacity: 1;
 
             &::after {
@@ -188,7 +188,7 @@ input[type='text'] {
 }
 
 // ------------------------------------------------------------------------- //
-// QUESTIONS SCREEN
+// QUESTIONS STAGE
 // ------------------------------------------------------------------------- //
 .signs-wrapper {
     display: flex;
@@ -282,7 +282,7 @@ input[type='text'] {
 }
 
 // ------------------------------------------------------------------------- //
-// PRIORITY SCREEN
+// PRIORITY STAGE
 // ------------------------------------------------------------------------- //
 .priority-choices {
     input {
@@ -350,7 +350,7 @@ input[type='text'] {
 }
 
 // ------------------------------------------------------------------------- //
-// RESULT SCREEN
+// RESULT STAGE
 // ------------------------------------------------------------------------- //
 .results {
     display: flex;
@@ -359,7 +359,7 @@ input[type='text'] {
 }
 
 .scroll {
-    padding: 30px 0 50px;
+    padding: 20px 0 50px;
     box-sizing: border-box;
     background: top center no-repeat;
     width: 356px;
@@ -377,7 +377,7 @@ input[type='text'] {
     }
 
     &.right {
-        padding-right: 45px;
+        padding-right: 30px;
         padding-left: 40px;
         background-image: url('#{$get-path-to-images}/scroll-right-bg.png');
 
@@ -387,13 +387,13 @@ input[type='text'] {
     }
 
     .scroll-title {
-        margin: 0 0 20px;
-        font-size: em(30);
+        margin: 0 0 10px;
+        font-size: em(27);
     }
 
     .scroll-character-info {
-        font-size: em(18);
-        line-height: 1.2;
-        height: 350px;
+        font-size: em(16);
+        line-height: 1;
+        height: 375px;
     }
 }

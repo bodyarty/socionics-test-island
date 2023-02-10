@@ -28,7 +28,7 @@ const StageCharacterCreate = ({
                         </h2>
                         <form
                             id="form-test"
-                            className="user-setup"
+                            className="character-setup"
                             onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
                                 e.preventDefault();
                                 nextStage();
@@ -37,7 +37,7 @@ const StageCharacterCreate = ({
                             <input
                                 type="text"
                                 placeholder="Имя"
-                                className="user-name"
+                                className="character-name"
                                 required
                                 defaultValue={name}
                                 onChange={(
@@ -46,8 +46,8 @@ const StageCharacterCreate = ({
                                     changeData({ name: e.target.value });
                                 }}
                             />
-                            <div className="user-selection">
-                                <label className="user-figure-wrapper user-male">
+                            <div className="character-selection">
+                                <label className="character-figure-wrapper character-male">
                                     <input
                                         type="radio"
                                         name="user"
@@ -59,14 +59,14 @@ const StageCharacterCreate = ({
                                             });
                                         }}
                                     />
-                                    <div className="user-figure">
+                                    <div className="character-figure">
                                         <img
                                             src={ManImg}
                                             alt="Man figure"
                                         />
                                     </div>
                                 </label>
-                                <label className="user-figure-wrapper user-female">
+                                <label className="character-figure-wrapper character-female">
                                     <input
                                         type="radio"
                                         name="user"
@@ -78,7 +78,7 @@ const StageCharacterCreate = ({
                                             });
                                         }}
                                     />
-                                    <div className="user-figure">
+                                    <div className="character-figure">
                                         <img
                                             src={WomanImg}
                                             alt="Man figure"
