@@ -80,14 +80,6 @@ body {
     width: 100%;
     min-width: $min-width-overall;
     min-height: $min-height-overall;
-
-    background-image: url('#{$get-path-to-images}/bg/entrance-screen-bg.png');
-    background-image: url('#{$get-path-to-images}/bg/choose-screen-man-bg.png');
-    background-image: url('#{$get-path-to-images}/bg/priority-screen-man-bg.png');
-    background-image: url('#{$get-path-to-images}/bg/result-screen-man-bg.png');
-    background-image: url('#{$get-path-to-images}/bg/choose-screen-woman-bg.png');
-    background-image: url('#{$get-path-to-images}/bg/priority-screen-woman-bg.png');
-    background-image: url('#{$get-path-to-images}/bg/result-screen-woman-bg.png');
 }
 
 .app {
