@@ -50,8 +50,8 @@ const StageResult = ({
             if (
                 characterAnswers[SocionicsFunction.Intuition] === Vector.White
             ) {
-                result.firstType = 'dost';
-                result.secondType = 'rob';
+                result.firstType = 'hamlet';
+                result.secondType = 'jack';
             }
         }
     }
@@ -100,10 +100,11 @@ const StageResult = ({
                         {isSuccess ? (
                             <>
                                 {name}, поздравляем с успешным прохождением
-                                теста! Из 16-ти возможных вариантов психотипа
-                                стоит внимательно ознакомиться с двумя, выберите
-                                как итог тот, что ближе вам, второй более
-                                характерен для вас в рабочих проявлениях7
+                                теста! Внимательно прочитай описания этих 2-ух
+                                психотипов и выбери как итог более близкое для
+                                тебя описание - каким ты проявляешься в домашней
+                                обстановке, с друзьями, - это и есть твой
+                                природный психотип.
                             </>
                         ) : (
                             <>
@@ -138,7 +139,7 @@ const StageResult = ({
                                 'http://taplink.cc/eleanor_live_socionics')
                         }
                     >
-                        Пройти консультацию специалиста
+                        На сессию по профессии/отношениям
                     </button>
                 ) : (
                     <button

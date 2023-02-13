@@ -13,8 +13,8 @@ const StageOpening = ({ nextStage }: StageOpeningProps) => {
                 </h1>
                 <div className="inscription">
                     <div className="inscription-content">
-                        Определи свой психотип и узнай сильные стороны своей
-                        натуры для профориентации и достижения успеха
+                        Представь себя в предложенных обстоятельствах и узнай
+                        свой психотип
                     </div>
                 </div>
             </div>

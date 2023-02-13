@@ -29,9 +29,10 @@ body {
 // ------------------------------------------------------------------------- //
 @include font-face ('intro-rust', '#{$get-path-to-font}/intro-rust', normal, normal);
 @include font-face ('realize-my-passion', '#{$get-path-to-font}/realize-my-passion', normal, normal);
+@include font-face ('open-sans', '#{$get-path-to-font}/OpenSans-Light', normal, normal);
 
 // ------------------------------------------------------------------------- //
-// 03 HEADINGS
+// 02 HEADINGS
 // ------------------------------------------------------------------------- //
 h1,
 h2,

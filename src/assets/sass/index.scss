@@ -63,7 +63,7 @@
     text-decoration: none;
     line-height: 1;
     font-family: $font-primary;
-    font-size: em(40);
+    font-size: em(36);
     transition: all 0.4s;
     background: $btn-bg-color;
     color: $btn-color;
@@ -392,7 +392,8 @@ input[type='text'] {
     }
 
     .scroll-character-info {
-        font-size: em(16);
+        font-family: $font-text;
+        font-size: em(15);
         line-height: 1;
         height: 375px;
     }
