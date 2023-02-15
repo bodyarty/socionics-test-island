@@ -28,8 +28,9 @@ body {
 // 02 FONT
 // ------------------------------------------------------------------------- //
 @include font-face ('intro-rust', '#{$get-path-to-font}/intro-rust', normal, normal);
-@include font-face ('realize-my-passion', '#{$get-path-to-font}/realize-my-passion', normal, normal);
 @include font-face ('open-sans', '#{$get-path-to-font}/OpenSans-Light', normal, normal);
+@include font-face ('nord-regular', '#{$get-path-to-font}/NordRegular', normal, normal);
+@include font-face ('nord-bold', '#{$get-path-to-font}/NordBold', normal, normal);
 
 // ------------------------------------------------------------------------- //
 // 02 HEADINGS

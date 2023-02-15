@@ -108,9 +108,11 @@ const StageResult = ({
                             </>
                         ) : (
                             <>
-                                {name}, к сожалению результаты теста
-                                противоречивы, и нельзя точно определить какой у
-                                вас тип. Попробуйте пройти тест снова.
+                                {name}, выбранная вами комбинация не имеет
+                                типологического соответствия, что
+                                свидетельствует о подтипных особенностях
+                                личности, рекомендуем пройти личную
+                                консультацию.
                             </>
                         )}
                     </div>
@@ -131,24 +133,15 @@ const StageResult = ({
                 ) : null}
             </div>
             <div className="app-footer">
-                {isSuccess ? (
-                    <button
-                        className="btn"
-                        onClick={() =>
-                            (document.location.href =
-                                'http://taplink.cc/eleanor_live_socionics')
-                        }
-                    >
-                        На сессию по профессии/отношениям
-                    </button>
-                ) : (
-                    <button
-                        className="btn"
-                        onClick={() => (document.location.href = '/')}
-                    >
-                        Попробовать снова
-                    </button>
-                )}
+                <button
+                    className="btn"
+                    onClick={() =>
+                        (document.location.href =
+                            'http://taplink.cc/eleanor_live_socionics')
+                    }
+                >
+                    На сессию по профессии/отношениям
+                </button>
             </div>
         </>
     );

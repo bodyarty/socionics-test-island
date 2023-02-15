@@ -11,60 +11,61 @@
 // ------------------------------------------------------------------------- //
 // 01 GENERAL SIZES
 // ------------------------------------------------------------------------- //
-$desktop-lg              : 1920px;  // lg (xl is upper)
-$desktop                 : 1440px;  // bg
-$tablet-landscape        : 1200px;  // md
-$tablet-portrait         : 900px;   // sm
-$phone                   : 600px;   // xs
+$desktop-lg: 1920px; // lg (xl is upper)
+$desktop: 1440px; // bg
+$tablet-landscape: 1200px; // md
+$tablet-portrait: 900px; // sm
+$phone: 600px; // xs
 
-$max-width-overall       : 2048px;
-$min-width-overall       : $tablet-portrait;
-$min-height-overall      : $min-width-overall;
+$max-width-overall: 2048px;
+$min-width-overall: $tablet-portrait;
+$min-height-overall: $min-width-overall;
 
-$global-padding-hor      : 70px;
-$global-padding-hor-sm   : 20px;
+$global-padding-hor: 70px;
+$global-padding-hor-sm: 20px;
 
 // ------------------------------------------------------------------------- //
 // 02 FONTS
 // ------------------------------------------------------------------------- //
-$font-primary  	      : 'realize-my-passion', arial, helvetica, sans-serif;
-$font-accent          : 'intro-rust', arial, helvetica, sans-serif;
-$font-text            : 'open-sans', arial, helvetica, sans-serif;
+$font-primary: 'nord-regular', arial, helvetica, sans-serif;
+$font-primary-bold: 'nord-bold', arial, helvetica, sans-serif;
+$font-accent: 'intro-rust', arial, helvetica, sans-serif;
+$font-text: 'open-sans', arial, helvetica, sans-serif;
 
 // ------------------------------------------------------------------------- //
 // 03 COLORS
 // ------------------------------------------------------------------------- //
-$white                              : #fff;
-$black                              : #000;
+$white: #fff;
+$black: #000;
 
-$decor-color-primary                : rgb(183,255,177);
+$decor-color-primary: rgb(183, 255, 177);
 
-$bg-color-primary                   : $white;
+$bg-color-primary: $white;
 
-$copy-color-primary                 : #4f2e00;
-$copy-color-primary-inverse         : $white;
-$copy-color-secondary               : #006968;
+$copy-color-primary: #4f2e00;
+$copy-color-primary-inverse: $white;
+$copy-color-secondary: #006968;
 
 // ------------------------------------------------------------------------- //
 // 04 COMPONENTS
 // ------------------------------------------------------------------------- //
-$header-padding                     : 20px 0 0;
-$footer-padding                     : 0 0 30px;
+$header-padding: 20px 0 0;
+$footer-padding: 0 0 30px;
 
-$btn-padding-ver-sm                 : 5px;
-$btn-padding-ver                    : 20px;
-$btn-padding-hor                    : 90px;
-$btn-min-width                      : 120px;
-$btn-min-height                     : 85px;
+$btn-padding-ver-sm: 5px;
+$btn-padding-ver: 20px;
+$btn-padding-hor: 90px;
+$btn-min-width: 120px;
+$btn-min-height: 85px;
 
-$btn-bg-color                       : $white;
-$btn-color                          : $copy-color-secondary;
+$btn-bg-color: $white;
+$btn-color: $copy-color-secondary;
 
-$btn-bg-color-hover                 : $btn-color;
-$btn-color-hover                    : $btn-bg-color;
+$btn-bg-color-hover: $btn-color;
+$btn-color-hover: $btn-bg-color;
 
 // ------------------------------------------------------------------------- //
 // 99 PATHS
 // ------------------------------------------------------------------------- //
-$get-path-to-images : '../../assets/images';
-$get-path-to-font   : '../../assets/fonts';
+$get-path-to-images: '../../assets/images';
+$get-path-to-font: '../../assets/fonts';
